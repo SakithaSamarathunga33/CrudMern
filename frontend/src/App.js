@@ -28,14 +28,21 @@ componentDidMount(){
   render() {
     return (
       <div>
-        {this.state.posts.map(posts =>(
-          <div>
-            <p>{posts.topic}</p>
-            <p>{posts.description}</p>
-            <p>{posts.postCategory}</p>
-          </div>
+        <p>All posts</p>
+       <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
 
-        ))}
+          </tr>
+        </thead>
+       </table>
+
+        
       </div>
     )
   }
