@@ -5,7 +5,7 @@ const router = express.Router();
 
 //save posts
 
-router.post('/post/save', async (req,res) => {
+router.post('/posts/save', async (req,res) => {
     let newPost = new Post(req.body);
 
     try {
@@ -23,7 +23,7 @@ router.post('/post/save', async (req,res) => {
 
 //get post
 
-router.get('/post', async (req, res) => {
+router.get('/posts', async (req, res) => {
     try {
         const posts = await Post.find();
         res.status(200).json({
@@ -41,7 +41,7 @@ router.get('/post', async (req, res) => {
 //update posts
 
 // Update posts
-router.put('/post/update/:id', async (req, res) => {
+router.put('/posts/update/:id', async (req, res) => {
     try {
         await Post.findByIdAndUpdate(req.params.id, { $set: req.body });
         res.status(200).json({
@@ -53,7 +53,7 @@ router.put('/post/update/:id', async (req, res) => {
 });
 
 // Delete post
-router.delete('/post/delete/:id', async (req, res) => {
+router.delete('/posts/delete/:id', async (req, res) => {
     try {
         const deletedPost = await Post.findByIdAndDelete(req.params.id);
         res.json({
