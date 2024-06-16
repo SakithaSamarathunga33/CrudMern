@@ -37,8 +37,23 @@ router.get('/posts', async (req, res) => {
     }
 });
 
+//get a specific post
 
-//update posts
+router.get("/posts/:id", async (req, res) => {
+    let postId = req.params.id;
+
+    try {
+        let post = await Post.findById(postId);
+        return res.status(200).json({
+            success: true,
+            post
+        });
+    } catch (err) {
+        return res.status(400).json({ success: false, err });
+    }
+});
+
+
 
 // Update posts
 router.put('/posts/update/:id', async (req, res) => {
