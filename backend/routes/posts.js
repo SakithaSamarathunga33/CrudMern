@@ -23,42 +23,49 @@ router.post('/post/save', async (req,res) => {
 
 //get post
 
-router.get('/post',(req,res) => {
-    Post.find().exec((err,posts) => {
-        if(err){
-            return res.status(400).json({
-                error:err
-            });
-        }
-        return res.status(200).json({
-            success:true,
-            existingPost:posts
+router.get('/post', async (req, res) => {
+    try {
+        const posts = await Post.find();
+        res.status(200).json({
+            success: true,
+            existingPosts: posts
         });
-    });
-
+    } catch (err) {
+        res.status(400).json({
+            error: err.message
+        });
+    }
 });
+
 
 //update posts
 
-router.put('/post/update/:id',(req,res) =>{
-    Post.findByIdAndUpdate(
-        req.params.id,
-        {
-            $set:req.body
-        },
-        (err,post) =>{
-            if(err){
-                return res.status(400).json({error:err});
-            }
-            return res.status(200).json({
-                success:"update successfully"
-            });
-        }
-    );
+// Update posts
+router.put('/post/update/:id', async (req, res) => {
+    try {
+        await Post.findByIdAndUpdate(req.params.id, { $set: req.body });
+        res.status(200).json({
+            success: "Updated successfully"
+        });
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
 });
 
-//delete post
-
-router.delete('/post/delete/:id',(res,req))
+// Delete post
+router.delete('/post/delete/:id', async (req, res) => {
+    try {
+        const deletedPost = await Post.findByIdAndDelete(req.params.id);
+        res.json({
+            message: "Deleted successfully",
+            deletedPost
+        });
+    } catch (err) {
+        res.status(400).json({
+            message: "Delete unsuccessful",
+            error: err.message
+        });
+    }
+});
 
 module.exports = router;
