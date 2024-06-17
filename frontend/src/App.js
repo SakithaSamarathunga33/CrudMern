@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import CreatePost from './components/CreatePost'
 import EditPost from './components/EditPost'
-import PostDetails from './components/PostDetails'
+import PostDetailsWithParams from './components/PostDetails' // Import PostDetailsWithParams
 import Navbar from './components/Navbar'
 
 export default class App extends Component {
@@ -16,7 +16,7 @@ export default class App extends Component {
             <Route path="/" element={<Home />} />
             <Route path="/add" element={<CreatePost />} />
             <Route path="/edit/:id" element={<EditPost />} />
-            <Route path="/post/:id" element={<PostDetails />} />
+            <Route path="/post/:id" element={<PostDetailsWithParams />} /> {/* Use PostDetailsWithParams here */}
           </Routes>
         </div>
       </BrowserRouter>

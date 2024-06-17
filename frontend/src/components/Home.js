@@ -15,7 +15,7 @@ componentDidMount(){
 }
 
   retrievePosts(){
-    axios.get("http://localhost:4000/posts").then(res =>{
+    axios.get("/posts").then(res =>{
       if(res.data.success){
         this.setState({
           posts:res.data.existingPosts
