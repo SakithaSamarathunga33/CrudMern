@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
+
 export default class Home extends Component {
   constructor(props){
     super(props);
@@ -25,6 +26,14 @@ componentDidMount(){
       }
     })
   }
+
+  onDelete = (id) => {
+    axios.delete(`/posts/delete/${id}`).then((res) =>{
+      alert("deleted successfully");
+      this.retrievePosts();
+    })
+  }
+
   render() {
     return (
       <div className="container">
@@ -51,10 +60,11 @@ componentDidMount(){
               <td>{posts.description}</td>
               <td>{posts.postCategory}</td>
               <td>
-                <button className="btn btn-warning" onClick={() => {/* your edit function here */}}>
-                  <i className="fas fa-edit"></i> Edit
-                  </button>
-                <button className="btn btn-danger" onClick={() => {/* your delete function here */}}>
+              <a className="btn btn-warning" href={`/edit/${posts._id}`}>
+                <i className="fas fa-edit"></i> &nbsp;Edit
+              </a>
+              &nbsp;
+                <button className="btn btn-danger" onClick={() => this.onDelete(posts._id)}>
                    <i className="far fa-trash-alt"></i> Delete
                  </button>
             </td>
