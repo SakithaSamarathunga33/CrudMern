@@ -1,0 +1,3 @@
+THIS  IS A TEST CRUD THAT I CREATED USING MERN STACK
+
+USE npm run dev TO rund the project
