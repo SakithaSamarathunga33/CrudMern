@@ -1,3 +1,5 @@
 THIS  IS A TEST CRUD THAT I CREATED USING MERN STACK
 
-USE npm run dev TO rund the project
+USE THIS TO RUN THE PROJECT :-  npm run dev 
+
+NEED ES7+ React/Redux/React-Native snippets EXTENSTION IN VSCODE 
